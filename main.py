@@ -1,5 +1,3 @@
-from re import T
-from traceback import print_tb
 from selenium import webdriver
 from colorama import Fore, init
 import os
