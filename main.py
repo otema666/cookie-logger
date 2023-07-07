@@ -1,7 +1,7 @@
 from selenium import webdriver
 from colorama import Fore, init
 import os
-
+from prettytable import PrettyTable
 
 # Inicio colorama
 init()
@@ -27,28 +27,40 @@ def clear():
 
 clear()
 
-
-
-
+error = False
 while True:
-    print(f"{R}Selecciona una opción:")
-    for i, key in enumerate(urls.keys()):
-        print(f"{G}[{i+1}] {key}")
-    print(S)
+    print(f"{R}Selecciona una opción:{S}")
+    table = PrettyTable(['#', 'Red Social', 'URL'])
+    for i, (key, value) in enumerate(urls.items()):
+        table.add_row([R + str(i+1)  + S, B + key + S, G + value + S])
+    print(table)
     
-    url = int(input("Sitio web: "))
-    clear()
-    if url == 1:
+    # for i, key in enumerate(urls.keys()):
+    #     print(f"{G}[{i+1}] {key}")
+    # print(S)
+    if error:
+        print(f'{R}[-]{S} Opción no válida')
+        print()
+    error = False
+    print(f'Sitio web: {R}', end="")
+    url = str(input()).lower()
+    if not error:
+        clear()
+    if url == "1" or url == "instagram" or url == "ig":
+        # clear()
         print(f'{G}Introduce el valor de la cookie de sesión de Instagram: \n{S}sessionid: {R}', end="")
         session_id_value = input()
         print(S)
         driver = webdriver.Chrome()
         driver.get("https://www.instagram.com/")
         clear()
-        driver.execute_script(f"document.cookie = 'sessionid={session_id_value};path=/';")
+        script = f"document.cookie = 'sessionid={session_id_value};path=/';"
+        driver.execute_script(script)
+        print(f'Script: {script}')
         driver.refresh()
         break
-    elif url == 2:
+    elif url == "2" or url == "github" or url == "git":
+        # clear()
         print(f'{G}Introduce el valor de la cookie de sesión de Github: \n{S}user_session: {R}', end="")
         user_session_value = input()
         print(S)
@@ -58,7 +70,8 @@ while True:
         driver.execute_script(f"document.cookie = 'user_session={user_session_value};path=/';")
         driver.refresh()
         break
-    elif url == 3:
+    elif url == "3" or url == "twitter":
+        # clear()
         print(f'{G}Introduce el valor de la cookie de sesión de Twitter: \n{S}auth_token: {R}', end="")
         auth_token_value = input()
         print(S)
@@ -69,7 +82,8 @@ while True:
         driver.refresh()
         driver.get("https://www.twitter.com/home/")
         break
-    elif url == 4:
+    elif url == "4" or url == "tiktok":
+        # clear()
         print(f'{G}Introduce el valor de la cookie de sesión de TikTok: \n{S}sessionid: {R}', end="")
         sessionid_value = input()
         print(S)
@@ -79,7 +93,8 @@ while True:
         driver.execute_script(f"document.cookie = 'sessionid={sessionid_value};path=/';")
         driver.refresh()
         break
-    elif url == 5: 
+    elif url == "5" or url == "youtube" or url == "yt":
+        # clear()
         print(f'Site: {G} YouTube{S}')
         print()
         print("Dos cookies disponibles:")
@@ -102,19 +117,23 @@ while True:
         driver = webdriver.Chrome()
         driver.get("https://www.youtube.com/")
         os.system('cls')
-        script = f"document.cookie = '{cookie}={session_value};path=/';"
+        script = f"document.cookie = '{cookie}={session_value};path=/; secure';"
         driver.execute_script(script) 
-        print(f'Script: {script}')
         driver.refresh()
         break
     elif url == 6:
+        # clear()
         pass
     elif url == 7:
+        # clear()
         pass
     elif url == 8:
+        # clear()
         pass
     else:
-        print(f'{R}[-]{S} Opción no válida')
+        error = True
+        clear()
+        
 
 
 
