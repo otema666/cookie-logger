@@ -63,10 +63,10 @@ while True:
         print(S)
         
         if os.name == "nt":
-            options = webdriver.ChromeOptions()
+            options = webdriver.FirefoxOptions()
             options.add_argument("--start-maximized")
-            options.add_argument("--incognito")
-            driver = webdriver.Chrome(options=options)
+            options.add_argument("--private")
+            driver = webdriver.Firefox(options=options)
         else:
             options = webdriver.FirefoxOptions()
             options.add_argument('--private-window')
@@ -85,10 +85,10 @@ while True:
         user_session_value = input()
         print(S)
         if os.name == "nt":
-            options = webdriver.ChromeOptions()
+            options = webdriver.FirefoxOptions()
             options.add_argument("--start-maximized")
-            options.add_argument("--incognito")
-            driver = webdriver.Chrome(options=options)
+            options.add_argument("--private")
+            driver = webdriver.Firefox(options=options)
         else:
             options = webdriver.FirefoxOptions()
             options.add_argument('--private-window')
@@ -104,10 +104,10 @@ while True:
         auth_token_value = input()
         print(S)
         if os.name == "nt":
-            options = webdriver.ChromeOptions()
+            options = webdriver.FirefoxOptions()
             options.add_argument("--start-maximized")
-            options.add_argument("--incognito")
-            driver = webdriver.Chrome(options=options)
+            options.add_argument("--private")
+            driver = webdriver.Firefox(options=options)
         else:
             options = webdriver.FirefoxOptions()
             options.add_argument('--private-window')
@@ -124,10 +124,10 @@ while True:
         sessionid_value = input()
         print(S)
         if os.name == "nt":
-            options = webdriver.ChromeOptions()
+            options = webdriver.FirefoxOptions()
             options.add_argument("--start-maximized")
-            options.add_argument("--incognito")
-            driver = webdriver.Chrome(options=options)
+            options.add_argument("--private")
+            driver = webdriver.Firefox(options=options)
         else:
             options = webdriver.FirefoxOptions()
             options.add_argument('--private-window')
@@ -159,10 +159,10 @@ while True:
         session_value = input()
         print(S)
         if os.name == "nt":
-            options = webdriver.ChromeOptions()
+            options = webdriver.FirefoxOptions()
             options.add_argument("--start-maximized")
-            options.add_argument("--incognito")
-            driver = webdriver.Chrome(options=options)
+            options.add_argument("--private")
+            driver = webdriver.Firefox(options=options)
         else:
             options = webdriver.FirefoxOptions()
             options.add_argument('--private-window')
@@ -195,7 +195,7 @@ while True:
 
 print(f'{G}Presiona {B}ENTER{G} para cerrar el navegador.{S}')
 input()
-rm_FirefoxLog()
 # Cierra la ventana del navegador
 driver.quit()
+rm_FirefoxLog()
 exit(1)
